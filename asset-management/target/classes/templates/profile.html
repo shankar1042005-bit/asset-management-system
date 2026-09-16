@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Profile - Asset Management System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<center>
+    <h1>My Profile</h1>
+    <h2>hello <span id="username" th:text="${username}"></span></h2>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Username</th>
+            <td th:text="${username}"></td>
+        </tr>
+        <tr>
+            <th>Role</th>
+            <td th:text="${role != null ? role : '-'}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <a th:if="${role == 'admin'}" th:href="@{/admin_dashboard.html}"><button>Back to Dashboard</button></a>
+    <a th:if="${role != 'admin'}" th:href="@{/employee_dashboard.html}"><button>Back to Dashboard</button></a>
+
+    <br><br>
+
+    <a th:href="@{/login.html(logout=true)}"><button>Logout</button></a>
+</center>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Maintenance Page</title>
+    </head>
+    <style th:inline="text">
+        body {
+            background-image: url('[[@{/images/maintenanceimg.jpeg}]]');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            }
+            </style>
+    <center>
+    <body>
+        <h1>Request For Asset Maintenance!! </h1>
+
+        <h3 th:if="${message != null and !message.isEmpty()}" th:text="${message}"></h3>
+
+        <form method="post" th:action="@{/maintenance_request.jsp}">
+            <label>Asset ID:</label>
+        <input type="text" name="assetId" placeholder="Example: AST004" required>
+        <br><br>
+
+        <label>Asset Name:</label>
+        <input type="text" name="assetName" placeholder="Example: Dell Laptop" required>
+        <br><br>
+
+        <label>Category:</label>
+        <select name="category" required>
+            <option value="">-- Select Category --</option>
+            <option value="Computer">Computer</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Laboratory Equipment">Laboratory Equipment</option>
+            <option value="Office Equipment">Office Equipment</option>
+            <option value="Other">Other</option>
+        </select>
+        <br><br>
+
+        <label>Brand:</label>
+        <input type="text" name="brand" placeholder="Example: Dell">
+        <br><br>
+
+        <label>Model:</label>
+        <input type="text" name="model" placeholder="Example: Latitude 5420">
+        <br><br>
+
+        <label>Serial Number:</label>
+        <input type="text" name="serialNumber" placeholder="Example: DL5420X01">
+        <br><br>
+
+        <label>Location:</label>
+        <input type="text" name="location" placeholder="Example: IT Lab">
+        <br><br>
+
+        <label>Status:</label>
+        <select name="status">
+            <option value="Available">Available</option>
+            <option value="Assigned">Assigned</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="Disposed">Disposed</option>
+        </select>
+        <br><br>
+
+        <label>Asset Complaint Summary:</label>
+        <br>
+        <textarea name="description" rows="4" cols="40"
+                  placeholder="Enter asset problem"></textarea>
+        <br><br>
+
+        <input type="submit" value="Maintenance Request">
+        <input type="reset" value="Clear">
+
+        
+
+        </form>
+        <br><br>
+        <a th:href="@{/admin_dashboard.html}">
+        <button>Back to Admin Dashboard</button>
+    </a>
+
+    <br><br>
+        <a th:href="@{/employee_dashboard.html}">
+        <button>Back to Student Dashboard</button>
+    </a>
+    </body>
+    </center>
+</html>

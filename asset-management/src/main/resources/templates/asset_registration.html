@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Asset Registration - Asset Management System</title>
+    <style th:inline="text">
+        body {
+            background-image: url('[[@{/images/maintenanceimg.jpeg}]]');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Asset Management System</h1>
+    <h2>Asset Registration</h2>
+
+    <p>Admin can register new assets using this form.</p>
+
+    <hr>
+
+    <h3>Register New Asset</h3>
+
+    <form th:action="@{/AssetRegistrationServlet}" method="post">
+
+        <label>Asset ID:</label>
+        <input type="text" name="assetId" placeholder="Example: AST004" required>
+        <br><br>
+
+        <label>Asset Name:</label>
+        <input type="text" name="assetName" placeholder="Example: Dell Laptop" required>
+        <br><br>
+
+        <label>Category:</label>
+        <select name="category" required>
+            <option value="">-- Select Category --</option>
+            <option value="Computer">Computer</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Laboratory Equipment">Laboratory Equipment</option>
+            <option value="Office Equipment">Office Equipment</option>
+            <option value="Other">Other</option>
+        </select>
+        <br><br>
+
+        <label>Brand:</label>
+        <input type="text" name="brand" placeholder="Example: Dell">
+        <br><br>
+
+        <label>Model:</label>
+        <input type="text" name="model" placeholder="Example: Latitude 5420">
+        <br><br>
+
+        <label>Serial Number:</label>
+        <input type="text" name="serialNumber" placeholder="Example: DL5420X01">
+        <br><br>
+
+        <label>Purchase Date:</label>
+        <input type="date" name="purchaseDate" required>
+        <br><br>
+
+        <label>Purchase Cost:</label>
+        <input type="number" name="purchaseCost" placeholder="Example: 65000" required>
+        <br><br>
+
+        <label>Location:</label>
+        <input type="text" name="location" placeholder="Example: IT Lab">
+        <br><br>
+
+        <label>Warranty Expiry:</label>
+        <input type="date" name="warrantyExpiry">
+        <br><br>
+
+        <label>Status:</label>
+        <select name="status">
+            <option value="Available">Available</option>
+            <option value="Assigned">Assigned</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="Disposed">Disposed</option>
+        </select>
+        <br><br>
+
+        <label>Description:</label>
+        <br>
+        <textarea name="description" rows="4" cols="40"
+                  placeholder="Enter asset description"></textarea>
+        <br><br>
+
+        <input type="submit" value="Register Asset">
+        <input type="reset" value="Clear">
+    
+
+
+    </form>
+
+    <hr>
+
+    <h3>Registered Assets</h3>
+
+    <p>Sample data for demonstration:</p>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Asset ID</th>
+            <th>Asset Name</th>
+            <th>Category</th>
+            <th>Brand</th>
+            <th>Purchase Cost</th>
+            <th>Location</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>AST001</td>
+            <td>Dell Laptop</td>
+            <td>Computer</td>
+            <td>Dell</td>
+            <td>&#8377;65,000</td>
+            <td>IT Lab</td>
+            <td>Available</td>
+        </tr>
+
+        <tr>
+            <td>AST002</td>
+            <td>HP Printer</td>
+            <td>Office Equipment</td>
+            <td>HP</td>
+            <td>&#8377;25,000</td>
+            <td>Admin Office</td>
+            <td>Assigned</td>
+        </tr>
+
+        <tr>
+            <td>AST003</td>
+            <td>Projector</td>
+            <td>Laboratory Equipment</td>
+            <td>Epson</td>
+            <td>&#8377;45,000</td>
+            <td>Seminar Hall</td>
+            <td>Maintenance</td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <a th:href="@{/admin_dashboard.html}">
+        <button>Back to Dashboard</button>
+    </a>
+</center>
+
+
+</body>
+</html>

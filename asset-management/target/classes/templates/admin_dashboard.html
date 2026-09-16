@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard - Asset Management System</title>
+    <style th:inline="text">
+        body {
+            background-image: url('[[@{/images/registerationimg.jpeg}]]');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+<center>
+
+    <h1>VIRTUSA LAB</h1>
+    <h2>Admin Dashboard</h2>
+
+    <p>Welcome, Admin!</p>
+
+    <hr>
+
+    <h3>Asset Management</h3>
+
+    <a th:href="@{/asset_registration.html}">
+        <button>Asset Registration</button>
+    </a>
+
+    <br><br>
+
+    <a th:href="@{/asset_assignment.jsp}">
+        <button>Asset Assignment</button>
+    </a>
+
+    <br><br>
+
+    <a th:href="@{/maintenance_request.jsp}">
+        <button>Maintenance</button>
+    </a>
+
+    <br><br>
+
+    <a th:href="@{/depreciation.html}">
+        <button>Depreciation</button>
+    </a>
+
+    <br><br>
+
+    <a th:href="@{/reports.html}">
+        <button>Reports</button>
+    </a>
+
+    <hr>
+
+    <h3>Quick Summary</h3>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Total Assets</th>
+            <th>Available</th>
+            <th>Assigned</th>
+            <th>Maintenance</th>
+        </tr>
+
+        <tr>
+            <td>100</td>
+            <td>35</td>
+            <td>55</td>
+            <td>10</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <a th:href="@{/login.html(logout=true)}">
+        <button>Logout</button>
+    </a>
+</center>
+
+</body>
+</html>

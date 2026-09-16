@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Asset Assignment</title>
+        <style th:inline="text">
+            body {
+                background-image: url('[[@{/images/maintenanceimg.jpeg}]]');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+        </style>
+    </head>
+    <body>
+    <center>
+        <h1>Assign Details : </h1>
+
+        <h3 th:if="${message != null and !message.isEmpty()}" th:text="${message}"></h3>
+
+        <form method="post" th:action="@{/asset_assignment.jsp}">
+
+        Asset ID:
+        <input type="text" name="assetId" required>
+        <br><br>
+
+        Asset Name:
+        <input type="text" name="assetName" required>
+        <br><br>
+
+        <h1>Assign This Asset To :</h1>
+
+        Student ID:
+        <input type="text" name="studentId" placeholder="Must match the student's login username" required>
+        <br><br>
+
+        Student Name:
+        <input type="text" name="studentName" required><br><br>
+
+        <h1>Asset Use Time Periode :</h1>
+
+        Start Date :
+        <input type="date" name="usedate" required>
+
+        <h4>Upto</h4>
+        End Date :
+        <input type="date" name="endDate" >
+
+        <h1>Confirm and Assign </h1>
+
+        <button type="submit">Assign</button>
+
+        <input type="reset" value="Clear">
+
+        </form>
+
+        <br><br>
+        <a th:href="@{/admin_dashboard.html}">
+        <button>Back to Dashboard</button>
+    </a>
+
+    </center>
+    </body>
+</html>

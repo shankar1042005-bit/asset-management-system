@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Dashboard - Asset Management System</title>
+    <style th:inline="text">
+        body {
+            background-image: url('[[@{/images/login_image3.png}]]');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Asset Management System</h1>
+    <h2>Student Dashboard</h2>
+
+    <p>Welcome, <span th:text="${username}">student</span>!</p>
+
+    <hr>
+
+    <h3>My Assigned Assets</h3>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Asset ID</th>
+            <th>Asset Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Assigned On</th>
+        </tr>
+
+        <tr th:if="${#lists.isEmpty(assignments)}">
+            <td colspan="5">No assets assigned yet.</td>
+        </tr>
+
+        <tr th:each="a : ${assignments}">
+            <td th:text="${a.assetId}"></td>
+            <td th:text="${a.assetName}"></td>
+            <td th:text="${a.startDate != null ? a.startDate : '-'}"></td>
+            <td th:text="${a.endDate != null ? a.endDate : '-'}"></td>
+            <td th:text="${a.assignedOn}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <h3>Student Options</h3>
+
+    <a th:href="@{/maintenance_request.jsp}">
+        <button>Report Maintenance Issue</button>
+    </a>
+
+    <br><br>
+
+    <a th:href="@{/profile.html}">
+        <button>My Profile</button>
+    </a>
+
+    <br><br>
+
+    <a th:href="@{/login.html(logout=true)}">
+        <button>Logout</button>
+    </a>
+</center>
+</body>
+</html>

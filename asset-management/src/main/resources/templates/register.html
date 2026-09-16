@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Asset Management System - Sign Up</title>
+</head>
+<body>
+<center>
+    <img th:src="@{/images/computer.jpeg}" height="20px" width="50px">
+    <h1>VIRTUSA LAB</h1>
+    <h1>Asset Management System</h1>
+    <h2>Sign Up</h2>
+
+    <th:block th:if="${error != null}">
+        <h3 style="color:red;" th:if="${error == 'exists'}">That username is already taken. Please choose another one.</h3>
+        <h3 style="color:red;" th:if="${error == 'mismatch'}">Password and Confirm Password do not match.</h3>
+        <h3 style="color:red;" th:if="${error == 'invalid'}">Please fill in all fields correctly.</h3>
+        <h3 style="color:red;" th:if="${error == 'db'}">Something went wrong while saving your account. Please try again.</h3>
+        <h3 style="color:red;" th:if="${error != 'exists' and error != 'mismatch' and error != 'invalid' and error != 'db'}">Sign up failed. Please try again.</h3>
+    </th:block>
+
+    <form th:action="@{/RegisterServlet}" method="post">
+
+        <label>Choose Username:</label>
+        <input type="text" name="username" required>
+        <br><br>
+
+        <label>Choose Password:</label>
+        <input type="password" name="password" required>
+        <br><br>
+
+        <label>Confirm Password:</label>
+        <input type="password" name="confirmPassword" required>
+        <br><br>
+
+        <label>Sign Up As:</label>
+        <br>
+
+        <input type="radio" name="role" value="admin" required>
+        <label>Admin</label>
+
+        <br>
+
+        <input type="radio" name="role" value="student">
+        <label>Student</label>
+
+        <br><br>
+
+        <input type="submit" value="Sign Up">
+
+    </form>
+
+    <br>
+    <a th:href="@{/login.html}">Already have an account? Login here</a>
+
+</center>
+</body>
+</html>

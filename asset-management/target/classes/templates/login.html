@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Asset Management System - Login</title>
+    <style th:inline="text">
+        body {
+            background-image: url('[[@{/images/login_image.png}]]');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <img th:src="@{/images/computer.jpeg}" height="20px" width="50px">
+    <h1>VIRTUSA LAB</h1>
+    <h1>Asset Management System</h1>
+    <h2>Login</h2>
+
+    <h3 style="color:green;" th:if="${registered == 'true'}">
+        Account created successfully! You can now login below.
+    </h3>
+
+    <th:block th:if="${error != null}">
+        <h3 style="color:red;" th:if="${error == 'invalid'}">Invalid username, password or role. Please try again.</h3>
+        <h3 style="color:red;" th:if="${error == 'session'}">Please login to continue.</h3>
+        <h3 style="color:red;" th:if="${error == 'forbidden'}">You are not allowed to open that page.</h3>
+        <h3 style="color:red;" th:if="${error != 'invalid' and error != 'session' and error != 'forbidden'}">Login failed. Please try again.</h3>
+    </th:block>
+
+    <form th:action="@{/Login_servlet}" method="post">
+
+        <label>Username:</label>
+        <input type="text" name="username" required>
+        <br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <br><br>
+
+        <label>Login As:</label>
+        <br>
+
+        <input type="radio" name="role" value="admin" required>
+        <label>Admin</label>
+
+        <br>
+
+        <input type="radio" name="role" value="student">
+        <label>Student</label>
+
+        <br><br>
+
+        <input type="submit" value="Login">
+        <button type="button" onclick="window.location.href='register.html'">Sign Up</button>
+
+    </form>
+</center>
+
+</body>
+</html>
